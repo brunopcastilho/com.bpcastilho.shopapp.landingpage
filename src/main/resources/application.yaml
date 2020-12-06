@@ -1,0 +1,9 @@
+server:
+  servlet:
+    context-path: /shopapp
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://34.95.197.234:3306/
+    username: root
+    password: password

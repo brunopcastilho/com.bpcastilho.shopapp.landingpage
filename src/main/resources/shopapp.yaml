@@ -1,0 +1,43 @@
+swagger: "2.0"
+info:
+  description: "ShopApp application"
+  version: "1.0.0"
+  title: "Swagger ShopApp application"
+basePath: "/shopApp"
+schemes:
+- "https"
+- "http"
+paths:
+  /addClientLandingPage:
+    post:
+      tags:
+      - "landingpage"
+      summary: "add a client through landing page"
+      description: ""
+      operationId: "addClientLandingPage"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "client to add"
+        required: true
+        schema:
+          $ref: "#/definitions/Client"
+      responses:
+        "405":
+          description: "Invalid input"
+definitions:
+  Client:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "doggie"
+      ip:
+        type: "string"
+      email:
+        type: "string"
+      
