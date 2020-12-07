@@ -11,9 +11,19 @@
 	</parent>
 	<groupId>com.bpcastilho.shopapp</groupId>
 	<artifactId>landingpage</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<name>landingpage</name>
 	<description>Demo project for Spring Boot</description>
+	
+	<distributionManagement>
+    <repository>
+        <uniqueVersion>false</uniqueVersion>
+        <id>deployrepo</id>
+        <name>deploy repository</name>
+        <url>file:///home/myfolder/.m2</url>
+        <layout>default</layout>
+    </repository>
+	</distributionManagement>
 
 	<properties>
 		<java.version>8</java.version>
@@ -113,7 +123,29 @@
 				</executions>
 			</plugin>
 
-
+			<plugin>
+			  <groupId>com.spotify</groupId>
+			  <artifactId>dockerfile-maven-plugin</artifactId>
+			  <version>${dockerfile-maven-version}</version>
+			  <executions>
+			    <execution>
+			      <id>default</id>
+			      <goals>
+			        <goal>build</goal>
+			        <goal>push</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			  <configuration>
+			  	<username>brunopcastilho</username>
+			  	<password>Inicio1!</password>
+			    <repository>brunopcastilho/shopapp</repository>
+			    <tag>${project.version}</tag>
+			    <buildArgs>
+			      <JAR_FILE></JAR_FILE>
+			    </buildArgs>
+			  </configuration>
+			</plugin>
 
 		</plugins>
 	</build>
